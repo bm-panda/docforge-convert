@@ -1,0 +1,23 @@
+[project]
+name = "docforge-convert"
+version = "1.0.0"
+requires-python = ">=3.10"
+dependencies = [
+    "PyMuPDF>=1.24",
+    "pdf2docx>=0.5.13",
+    "python-docx>=1.1",
+    "openpyxl>=3.1",
+    "python-pptx>=1.0",
+    "Pillow>=10",
+    "reportlab>=4.1",
+    "markdown>=3.5",
+    "html2text>=2024.2.26",
+    "ebooklib>=0.18",
+    "xlrd>=2.0",
+    "xlsxwriter>=3.1",
+    "odfpy>=1.4",
+    "striprtf>=0.0.26",
+    "PyYAML>=6.0",
+    "charset-normalizer>=3.0",
+    "pywin32>=306 ; sys_platform == 'win32'",
+]

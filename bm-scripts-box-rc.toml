@@ -1,0 +1,62 @@
+[bmscriptsbox]
+
+[bmscriptsbox.info]
+id = "8e0df335-e471-4553-8b3b-2be6ab2d80bf"
+name = "文档格式转换"
+desc = "文档格式转换脚本 | 支持 Word/Excel/PPT/ODT/RTF 与 PDF 互转,PDF 转 Word/图片/文本/Markdown,表格 xlsx/xls/csv/tsv/ods 互转,Markdown/html/json/xml/yaml 互转,EPUB 电子书转换,批量转换"
+version = "1.0.0"
+icon = "./imgs/logo.png"
+
+[bmscriptsbox.runtime]
+language = "python"
+language_version = ">=3.10"
+entry = "main.py"
+terminal = "always"
+
+[bmscriptsbox.triggers.context_menu]
+enabled = true
+targets = ["files"]
+filters = [".docx", ".doc", ".odt", ".rtf", ".pdf", ".xlsx", ".xls", ".ods", ".csv", ".tsv", ".pptx", ".ppt", ".odp", ".txt", ".md", ".markdown", ".html", ".htm", ".json", ".xml", ".yaml", ".yml", ".epub"]
+
+[bmscriptsbox.triggers.shortcut]
+enabled = true
+input_type = "files"
+filters = [".docx", ".doc", ".odt", ".rtf", ".pdf", ".xlsx", ".xls", ".ods", ".csv", ".tsv", ".pptx", ".ppt", ".odp", ".txt", ".md", ".markdown", ".html", ".htm", ".json", ".xml", ".yaml", ".yml", ".epub"]
+
+[[bmscriptsbox.inputs]]
+name = "input_files"
+label = "源文件"
+type = "list"
+pick = "files"
+exts = [".docx", ".doc", ".odt", ".rtf", ".pdf", ".xlsx", ".xls", ".ods", ".csv", ".tsv", ".pptx", ".ppt", ".odp", ".txt", ".md", ".markdown", ".html", ".htm", ".json", ".xml", ".yaml", ".yml", ".epub"]
+description = "要转换的文档/表格/演示/电子书/数据文件，可多选"
+
+[[bmscriptsbox.params]]
+name = "target"
+label = "目标格式"
+type = "str"
+default = "pdf"
+choices = ["pdf", "docx", "txt", "md", "html", "rtf", "xlsx", "csv", "tsv", "json", "ods", "pptx", "png", "jpg"]
+choice_labels = { pdf = "PDF", docx = "Word(docx)", txt = "纯文本", md = "Markdown", html = "HTML", rtf = "RTF", xlsx = "Excel(xlsx)", csv = "CSV", tsv = "TSV", json = "JSON", ods = "ODS", pptx = "PPT(pptx)", png = "PNG图片", jpg = "JPG图片" }
+description = "转换目标格式，须与源文件类型匹配；png/jpg 仅用于 PDF 转图片"
+
+[[bmscriptsbox.params]]
+name = "output_dir"
+label = "输出目录"
+type = "str"
+default = ""
+description = "留空则输出到源文件所在目录"
+
+[bmscriptsbox.params_form]
+enabled = true
+
+[[bmscriptsbox.outputs]]
+name = "results"
+type = "str"
+description = "转换结果 JSON 字符串，元素字段：source/target/status/message/outputs"
+
+[bmscriptsbox.node]
+enabled = true
+
+[bmscriptsbox.schedule]
+enabled = true
